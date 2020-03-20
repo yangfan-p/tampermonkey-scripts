@@ -16,6 +16,7 @@
           key = 'your_key'
 
     const ifr = document.createElement('iframe')//avoid cover already exist modules
+    ifr.setAttribute('style', 'display:none')
     document.body.appendChild(ifr)
 
     function addScript(url) {//add the specified script
