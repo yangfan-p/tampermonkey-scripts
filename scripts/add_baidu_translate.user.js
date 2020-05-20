@@ -11,10 +11,8 @@
 
 (function () {
     'use strict';
-
     const appid = 'your_appid',
           key = 'your_key'
-
     const ifr = document.createElement('iframe')//avoid cover already exist modules
     ifr.setAttribute('style', 'display:none')
     document.body.appendChild(ifr)
@@ -78,7 +76,7 @@
         let last_query = ''
         window.addEventListener('mouseup', (e) => {
             var text = window.getSelection().toString()
-            if (text && text !== last_query) {// avoid duplicate event occur
+            if (e.target !== globalEle  && text && text !== last_query) {// avoid duplicate event occur
                 last_query = text
                 forRequest(text)
                     .then(res => {
@@ -93,7 +91,7 @@
                 })
             }
         })
-        window.addEventListener('mousedown', () => delUI())
+        window.addEventListener('mousedown', (e) => e.target!== globalEle && delUI())
     })
     // Your code here...
 })();
